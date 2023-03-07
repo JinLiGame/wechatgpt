@@ -44,7 +44,7 @@ class WechatChannel(Channel):
         from_user_id = msg['FromUserName']
         to_user_id = msg['ToUserName']              # 接收人id
         other_user_id = msg['User']['UserName']     # 对手方id
-        content = msg['Text']
+        content = msg['Text'] + ",回答时加上emoji."
         match_prefix = self.check_prefix(content, conf().get('single_chat_prefix'))
         if from_user_id == other_user_id and match_prefix is not None:
             # 好友向自己发送消息
@@ -80,7 +80,7 @@ class WechatChannel(Channel):
         if not group_name:
             return ""
         origin_content = msg['Content']
-        content = msg['Content']
+        content = msg['Content'] + ",回答时加上emoji."
         content_list = content.split(' ', 1)
         context_special_list = content.split('\u2005', 1)
         if len(context_special_list) == 2:
