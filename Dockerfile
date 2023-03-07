@@ -3,7 +3,7 @@ FROM python:3.10-alpine
 LABEL maintainer="foo@bar.com"
 ARG TZ='Asia/Shanghai'
 
-ARG CHATGPT_ON_WECHAT_VER=1.0.2
+ARG CHATGPT_ON_WECHAT_VER=1
 
 ENV BUILD_PREFIX=/app \
     BUILD_OPEN_AI_API_KEY='YOUR OPEN AI KEY HERE'
@@ -19,7 +19,7 @@ RUN apk add --no-cache \
         libffi-dev 
 
 RUN wget -t 3 -T 30 -nv -O chatgpt-on-wechat-${CHATGPT_ON_WECHAT_VER}.tar.gz \
-          https://github.com/zhayujie/chatgpt-on-wechat/archive/refs/tags/${CHATGPT_ON_WECHAT_VER}.tar.gz \
+          https://github.com/iknow2333/chatgpt-on-wechat/archive/refs/tags/${CHATGPT_ON_WECHAT_VER}.tar.gz \
     && tar -xzf chatgpt-on-wechat-${CHATGPT_ON_WECHAT_VER}.tar.gz \
     && mv chatgpt-on-wechat-${CHATGPT_ON_WECHAT_VER} ${BUILD_PREFIX} \
     && rm chatgpt-on-wechat-${CHATGPT_ON_WECHAT_VER}.tar.gz
