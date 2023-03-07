@@ -43,11 +43,11 @@ class ChatGPTBot(Bot):
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",  # 对话模型的名称
                 messages=query,
-                temperature=0.9,  # 值在[0,1]之间，越大表示回复越具有不确定性
-                max_tokens=1200,  # 回复最大的字符数
+                temperature=1.0,  # 值在[0,1]之间，越大表示回复越具有不确定性
+                max_tokens=1800,  # 回复最大的字符数
                 top_p=1,
-                frequency_penalty=0.0,  # [-2,2]之间，该值越大则更倾向于产生不同的内容
-                presence_penalty=0.0,  # [-2,2]之间，该值越大则更倾向于产生不同的内容
+                frequency_penalty=1.0,  # [-2,2]之间，该值越大则更倾向于产生不同的内容
+                presence_penalty=1.0,  # [-2,2]之间，该值越大则更倾向于产生不同的内容
             )
             # res_content = response.choices[0]['text'].strip().replace('<|endoftext|>', '')
             logger.info(response.choices[0]['message']['content'])
